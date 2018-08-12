@@ -1,0 +1,77 @@
+                            Router_On_Stick
+
+
+1. Design the Topology
+
+
+
+
+
+
+
+
+
+
+
+
+
+2. COnfigure VLAN on Switches
+
+Note: VLAN 10, 20 , 30
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+3. Add Router to the Design
+
+
+
+
+
+
+
+
+
+
+
+
+Router#config t
+Router#int f0/0
+Router#no shut
+
+Router(config)#interface fastEthernet 0/0.2
+Router(config-subif)#encapsulation dot1Q 10
+Router(config-subif)#ip address 192.168.10.10 255.255.255.0
+Router(config-subif)#no shutdown
+
+Router(config)#interface fastEthernet 0/0.3
+Router(config-subif)#encapsulation dot1Q 20
+Router(config-subif)#ip address 192.168.20.10 255.255.255.0
+Router(config-subif)#no shutdown
+
+Router(config)#interface fastEthernet 0/0.4
+Router(config-subif)#encapsulation dot1Q 30
+Router(config-subif)#ip address 192.168.30.10 255.255.255.0
+Router(config-subif)#no shutdown
+
+================================================================
+
+
+Switch>en
+Switch#config t
+
+Switch(config)#interface fastEthernet 0/9
+Switch(config-if)#switchport mode trunk
