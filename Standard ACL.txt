@@ -1,0 +1,104 @@
+- Now, you  have to configure Routing Protocol (OSPF)
+
+
+All Routers Configured !!
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+			Now Lets Create Standard ACL's
+
+
+
+We have 4 Departments viz,
+Sales, Marketing, R&D and Administartion
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+1. Using Standard ACL will block all Traffic entering
+   in Administration department from Sales Dept
+
+
+Router(config)#access-list 5 deny 192.168.10.0 0.0.0.255 
+Router(config)#access-list 5 permit any
+Router#
+Router(config)#int f0/0
+Router(config-if)#ip access-group 5 out
+
+
+
+Note: To Remove ACL
+
+Router(config-if)#no ip access-group 5 out
+Router(config)#no access-list 5
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+2. Now lets block R&D First PC from accessing marketing entire network
+
+and also allow other Clients in R&D in Accessing entire Marketing nw.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Hence we did it
+
+
+
+
+
+Standard ACL is done
+
+
+
+
+
+  
