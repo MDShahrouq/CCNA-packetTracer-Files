@@ -1,0 +1,125 @@
+- Now, you  have to configure Routing Protocol (OSPF)
+
+
+All Routers Configured !!
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+			Now Lets Create Extended ACL's
+
+
+
+We have 4 Departments viz,
+Sales, Marketing, R&D and Administartion
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+1. Using Standard ACL will block all outgoing trafffice entering
+   in Administration department from Sales Dept host
+
+
+Router(config)#access-list 5 deny 192.168.10.0 0.0.0.255 
+Router(config)#access-list 5 permit any
+Router#
+Router(config)#int f0/0
+Router(config-if)#ip access-group 5 out
+
+
+
+Note: To Remove ACL
+
+Router(config-if)#no ip access-group 5 out
+Router(config)#no access-list 5
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+2. Now lets block R&D First PC from accessing marketing entire network
+
+and also allow other Clients in R&D in Accessing entire Marketing nw.
+
+
+
+
+
+
+When to use In or out for ACL?
+- It all depends on where the packet or data is originating
+
+Suppose in Standard ACL, if the packet is originating in Sales Dept
+ and you want to block it from accessing Admin Dept, the we have to configure the it to nearest possible destination Router.
+
+So when the packet Enters the Admin Dept it is IN, and comes OUT 
+from the f0/0 interface, so Use OUT bound for Standard ACL
+
+
+
+
+
+
+
+
+
+
+So incase of Extended ACL, we configure the ACL nearest to Source.
+
+So now the traffic is originating from Sales Dept , so it will be IN bound to router from f0/0, and will leave router from s2/0 interface 
+
+
+
+
+
+
+
+
+
+Hence we did it
+
+
+
+
+
+Extended ACL is done
+
+
+
+
+
+
+  
